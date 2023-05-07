@@ -11,7 +11,7 @@ import { FreeMode } from "swiper";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-const TopChartCard = ({ song, i, isPlaying, activeSong, handlePause, handlePlay}) => {
+const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick}) => {
   
   return (
     <div className="w-full flex flex-row items-center hover:bg-white/10 rounded-lg py-2 p-4 cursor-pointer mb-2">
@@ -26,7 +26,7 @@ const TopChartCard = ({ song, i, isPlaying, activeSong, handlePause, handlePlay}
             <p className="text-sm text-white">{song?.subtitle}</p>
           </Link>
         </div>
-        <PlayPause isPlaying={isPlaying} activeSong={activeSong} song={song} handlePause={handlePause} handlePlay={handlePlay}
+        <PlayPause isPlaying={isPlaying} activeSong={activeSong} song={song} handlePause={handlePauseClick} handlePlay={handlePlayClick}
         />
       </div>
     </div>
@@ -49,7 +49,7 @@ function TopPlay() {
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
-  const handlePlayCLick = ({song,i}) => {
+  const handlePlayClick = ({song,i}) => {
     dispatch(setActiveSong({song,songs,i}));
     dispatch(playPause(true));
   }
@@ -69,7 +69,7 @@ function TopPlay() {
 
         <div className="mt-4 flex flex-col gap-1">
           {topPlays?.map((song, i) => (
-            <TopChartCard key={song.key} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} handlePause={() => handlePauseClick()} handlePlay={() => handlePlayCLick(song,i)}/>
+            <TopChartCard key={song.key} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} handlePauseClick={handlePauseClick} handlePlayClick={() => handlePlayClick(song,i)}/>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { RiCloseCircleFill } from "react-icons/ri";
 import {HiOutlineMenu} from "react-icons/hi";
@@ -16,7 +17,8 @@ const NavLinks = () => {
         >
           <item.icon className="bg-white text-backgroundColor rounded-full hover:text-white hover:bg-skyColor mr-5 w-6 h-6 " />
           <div className="bg-white text-backgroundColor rounded-lg hover:text-white hover:bg-skyColor px-4 py-2 font-bold">
-            {item.name}
+            <Link to={item.to} >{item.name}</Link>
+            
           </div>
         </NavLink>
       ))}
