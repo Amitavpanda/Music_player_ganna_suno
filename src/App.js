@@ -7,6 +7,9 @@ import SongDetails from "./pages/SongDetails";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import MusicPlayer from "./components/MusicPlayer/index";
+import ArtistDetails from "./pages/ArtistDetails";
+import TopArtists from "./pages/TopArtists";
+import Search from "./pages/Search";
 
 function App() {
   const {activeSong} = useSelector((state) => state.player);
@@ -21,7 +24,10 @@ function App() {
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
+              <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/songs/:songid" element={<SongDetails />} />
+              <Route path="/artists/:id" element={<ArtistDetails />} />
+              <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>
           <div className="xl:sticky relative top-0 h-fit">

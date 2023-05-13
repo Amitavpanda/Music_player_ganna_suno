@@ -12,8 +12,14 @@ export const shazamApi = createApi({
 
     endpoints: (builder) => ({
         getTopCharts: builder.query({query:  () => '/charts/track'}),
-        getSongDetails : builder.query({query: ({songid}) => `/songs/get-details?key=${songid}` })
+        getSongDetails : builder.query({query: ({songid}) => `/songs/get-details?key=${songid}` }),
+        getSongsRelated: builder.query({query: ({songid}) => `/songs/list-recommendations?key=${songid}&locale=en-US` }),
+        getArtistDetails: builder.query({query: ({artistid}) => `artists/get-details?id=${artistid}`}),
+        getArtistTopSongs : builder.query({query: ({artistid}) => `artists/get-top-songs?id=${artistid}`}),
+        getSongsBySearch : builder.query({query: ({searchTerm}) => `/search?term=${searchTerm}`}),
+
+
     }),
 });
 
-export const {useGetTopChartsQuery, useGetSongDetailsQuery} = shazamApi;
+export const {useGetTopChartsQuery, useGetSongDetailsQuery, useGetSongsRelatedQuery, useGetArtistDetailsQuery, useGetArtistTopSongsQuery, useGetSongsBySearchQuery} = shazamApi;

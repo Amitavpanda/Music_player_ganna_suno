@@ -20,6 +20,5 @@ export const genres = [
 ];
 
 export const links = [{ name: 'Discover', to: '/', icon: FaCcDiscover },
-{ name: 'Around You', to: '/around-you', icon: AiTwotoneHome },
-{ name: 'Top Artists', to: '/top-artists', icon: BiDockTop },
-{ name: 'Top Charts', to: '/top-charts', icon: BiBarChartSquare }];
+{ name: 'Top Artists', to: '/top-artists', icon: BiDockTop }
+];
