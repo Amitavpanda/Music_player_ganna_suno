@@ -5,18 +5,18 @@ export const shazamApi = createApi({
     baseQuery : fetchBaseQuery({
         baseUrl: 'https://shazam.p.rapidapi.com',
         prepareHeaders: (headers)  => {
-            headers.set('X-RapidAPI-Key','f0e2ea42a6msh3f997ed18dd98b2p1dbd19jsn0fc3c3d11f51');
+            headers.set('X-RapidAPI-Key','a077d4ae88msh5db07536f6a793dp164e40jsn2328fd514507');
             return headers;
         }
     }),
 
     endpoints: (builder) => ({
-        getTopCharts: builder.query({query:  () => '/charts/track'}),
-        getSongDetails : builder.query({query: ({songid}) => `/songs/get-details?key=${songid}` }),
-        getSongsRelated: builder.query({query: ({songid}) => `/songs/list-recommendations?key=${songid}&locale=en-US` }),
-        getArtistDetails: builder.query({query: ({artistid}) => `artists/get-details?id=${artistid}`}),
-        getArtistTopSongs : builder.query({query: ({artistid}) => `artists/get-top-songs?id=${artistid}`}),
-        getSongsBySearch : builder.query({query: ({searchTerm}) => `/search?term=${searchTerm}`}),
+        getTopCharts: builder.query({query:  () => '/charts/track', cacheKey: 'getTopCharts',}),
+        getSongDetails : builder.query({query: ({songid}) => `/songs/get-details?key=${songid}`, cacheKey: 'getSongDetails',}),
+        getSongsRelated: builder.query({query: ({songid}) => `/songs/list-recommendations?key=${songid}&locale=en-US` , cacheKey: 'getSongsRelated', }),
+        getArtistDetails: builder.query({query: ({artistid}) => `artists/get-details?id=${artistid}`, cacheKey: 'getArtistDetails',}),
+        getArtistTopSongs : builder.query({query: ({artistid}) => `artists/get-top-songs?id=${artistid}`, cacheKey: 'getArtistTopSongs',}),
+        getSongsBySearch : builder.query({query: ({searchTerm}) => `/search?term=${searchTerm}`, cacheKey: 'getSongsBySearch',}),
 
 
     }),
