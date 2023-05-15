@@ -46,7 +46,7 @@ function TopPlay() {
       <div className="w-full flex flex-col">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-white font-bold text-2xl">Top Charts</h2>
-          <Link to="/top-charts">
+          <Link to="/">
             <p className="text-gray-300 text-base cursor-pointer"> See More</p>
           </Link>
         </div>
@@ -60,7 +60,7 @@ function TopPlay() {
       <div className="w-full flex flex-col mt-8">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-white font-bold text-2xl">Top Artists</h2>
-          <Link to="/top-charts">
+          <Link to="/top-artists">
             <p className="text-gray-300 text-base cursor-pointer"> See More</p>
           </Link>
         </div>
