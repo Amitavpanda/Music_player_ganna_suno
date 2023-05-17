@@ -36,8 +36,8 @@ function App() {
         </div>
       </div>
       {activeSong?.title && (
-        <div className="absolute h-30 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-black/50  to-backgroundColor
-         backdrop-blur-lg rounded-t-3xl z-10">
+        <div className="absolute h-40 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-black/50  to-backgroundColor
+         backdrop-blur-lg z-10">
          <MusicPlayer />
         </div>
       )}
