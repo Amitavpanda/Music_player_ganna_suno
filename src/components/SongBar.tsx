@@ -1,6 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PlayPause from "./PlayPause";
+
+interface ArtistTopSong {
+  id : string;
+  attributes?:{
+    artwork?:{
+      url : string;
+    };
+    name: string;
+    artistName : string;
+  }
+
+}
+interface Song{
+  title: string;
+  images?: {
+    coverart : string;
+  }
+  artists?: Array<{adamid : string}>;
+  key: string;
+  subtitle : string;
+}
+
+interface SongBarProps{
+  song?: Song;
+  i : number;
+  isPlaying : boolean;
+  activeSong : Song | null;
+  handlePauseClick : () => void;
+  handlePlayClick : () => void;
+  artistid?: number;
+  topSong?: ArtistTopSong;
+}
 function SongBar({
   song,
   i,
@@ -10,7 +42,7 @@ function SongBar({
   handlePlayClick,
   artistid,
   topSong,
-}) {
+} : SongBarProps) {
   return (
     <div className="w-full flex flex-row items-center hover:bg-white/10 rounded-lg py-2 p-4 cursor-pointer mb-2">
       <h3 className="font-bold text-base text-white mr-3">{i + 1}</h3>
@@ -38,8 +70,8 @@ function SongBar({
               {topSong?.attributes?.name}
             </p>
           )}
-          {!artistid ? (
-            <Link to={`/artists/${song?.artists[0].adamid}`}>
+          {!artistid && song?.artists && song.artists.length > 0 ? (
+            <Link to={`/artists/${song?.artists[0]?.adamid}`}>
               <p className="text-sm text-white">{song?.subtitle}</p>
             </Link>
           ) : (

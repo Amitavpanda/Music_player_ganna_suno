@@ -11,6 +11,7 @@ import ArtistDetails from "./pages/ArtistDetails";
 import TopArtists from "./pages/TopArtists";
 import Search from "./pages/Search";
 
+
 function App() {
   const {activeSong} = useSelector((state) => state.player);
   return (

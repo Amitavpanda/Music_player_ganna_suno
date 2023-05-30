@@ -6,12 +6,18 @@ import {HiOutlineMenu} from "react-icons/hi";
 import logo from "../assets/logo.png";
 import { links } from "../assets/constants";
 
+interface NavLinkItem {
+  name : string;
+  to: string;
+  icon: React.ElementType;
+}
 const NavLinks = () => {
   return (
     <div className="mt-10">
-      {links.map((item) => (
+      {links.map((item : NavLinkItem) => (
         <NavLink
           key={item.name}
+          to={item.to}
           className="flex flex-row justify-start
       items-center my-8"
         >
@@ -27,7 +33,7 @@ const NavLinks = () => {
 };
 
 function SideBar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<Boolean>(false);
   return (
     <>
       <div className="md:flex hidden flex-col  items-center w-[240px] py-10 px-4 bg-gradient-to-br from-[#121212] to-backgroundColor">

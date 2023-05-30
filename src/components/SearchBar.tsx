@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState('');
-  const handleSubmit = (e) => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const handleSubmit = (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchTermModified =  searchTerm.replace(/ /g, '%20');
     navigate(`/search/${searchTermModified}`);
