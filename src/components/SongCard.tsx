@@ -3,7 +3,25 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
 import PlayPause from './PlayPause';
-function SongCard({song,i, isPlaying , activeSong, songs}) {
+
+interface Song{
+  title: string;
+  images?: {
+    coverart : string;
+  }
+  artists?: Array<{adamid : string}>;
+  key: string;
+  subtitle : string;
+}
+
+interface SongCardProps{
+  song : Song;
+  i: number;
+  isPlaying : boolean;
+  activeSong : Song | null;
+  songs : Song[];
+}
+function SongCard({song,i, isPlaying , activeSong, songs} : SongCardProps) {
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false));

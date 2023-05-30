@@ -1,6 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-function ArtistCard({track}) {
+
+interface Track {
+  artists : Array<{adamid: string}>;
+  images?: {
+    background: string;
+  };
+  subtitle : string;
+}
+interface ArtistCardProps {
+  track : Track;
+}
+function ArtistCard({track} : ArtistCardProps) {
     const navigate = useNavigate();
   return (
     <div className='flex flex-col w-[250px] p-4 bg-white/10 bg-opacity-80 backdrop-blur-sm animate-pluse rounded-lg cursor-pointer' onClick={() => navigate(`/artists/${track?.artists[0].adamid}`)}>

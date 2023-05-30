@@ -1,6 +1,35 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-function DetailsHeader({artistid, songid, songData, header, artistdetails}) {
+
+
+interface ArtistDetails{
+  attributes: {
+    artwork: {
+      url: string;
+    }
+    name : string;
+  }
+}
+interface SongData {
+  images?: {
+    coverart : string;
+  };
+  title: string;
+  subtitle: string;
+  genres?: {
+    primary: string;
+  };
+}
+
+interface DetailsHeaderProps{
+  artistid : string;
+  songid : string;
+  songData : SongData;
+  header: string;
+  artistdetails : ArtistDetails;
+}
+
+function DetailsHeader({artistid, songid, songData, header, artistdetails} : DetailsHeaderProps ) {
   const navigate = useNavigate();
   return (
     <div>

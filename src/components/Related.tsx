@@ -2,13 +2,22 @@ import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import SongBar from './SongBar';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
-function Related({artistTopSongs, artistid,title}) {
+
+interface ArtistTopSong {
+  key : string;
+}
+interface RelatedProps{
+  artistTopSongs : ArtistTopSong[];
+  artistid : string;
+  title: string;
+}
+function Related({artistTopSongs, artistid,title} : RelatedProps) {
   const dispatch = useDispatch();
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
+  const { activeSong, isPlaying } = useSelector((state : any) => state.player);
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
-  const handlePlayClick = ({topSong,i}) => {
+  const handlePlayClick = ({topSong ,i} : {topSong: ArtistTopSong; i:Number}) => {
     dispatch(setActiveSong({topSong,artistTopSongs,i}));
     dispatch(playPause(true));
   }
