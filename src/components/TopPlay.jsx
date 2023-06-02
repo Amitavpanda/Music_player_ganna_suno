@@ -14,33 +14,22 @@ import 'swiper/css/free-mode';
 import SongBar from "./SongBar";
 
 
-interface Song{
-  title: string;
-  images?: {
-    coverart : string;
-    background : string;
-  }
-  artists?: Array<{adamid : string}>;
 
-  key: string;
-  subtitle : string;
-}
-
-interface RootState{
-  activeSong : Song | null;
-  isPlaying : boolean;
-}
 function TopPlay() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {id: artistid} = useParams<{ id: string }>();
-  const { activeSong, isPlaying } = useSelector((state : RootState) => state.player);
+  const {id: artistid} = useParams();
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetTopChartsQuery();
+  console.log(data);
   if (error) {
     console.log(error.message);
   }
   const songs = data?.tracks;
-  const divRef = useRef<HTMLDivElement>(null);
+  // songs?.map((song) => (
+  //   console.log("background ",song?.images?.background)
+  // ));
+  const divRef = useRef(null);
 
   useEffect(() => {
     if (divRef.current) {
@@ -51,7 +40,7 @@ function TopPlay() {
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
-  const handlePlayClick = (song: Song, i: number) => {
+  const handlePlayClick = (song, i) => {
     dispatch(setActiveSong({song,songs,i}));
     dispatch(playPause(true));
   }
@@ -70,7 +59,7 @@ function TopPlay() {
         </div>
 
         <div className="mt-4 flex flex-col gap-1">
-          {topPlays?.map(({song, i} : {song : Song; i:number}) => (
+          {topPlays?.map((song, i ) => (
             <SongBar key={`${song.key}-${artistid}`} song={song} i={i} isPlaying={isPlaying} activeSong={activeSong} handlePauseClick={handlePauseClick} handlePlayClick={() => handlePlayClick(song,i)}/>
           ))}
         </div>
@@ -94,13 +83,15 @@ function TopPlay() {
         modules={[FreeMode]}
         className="mt-4">
         
-        {topPlays?.map(({song, i} : {song : Song; i:number}) => (
+        {topPlays?.map((song, i) => (
           <SwiperSlide  key={song?.key}
           style={{ width: '25%', height: '50%'}}
           className=" shadow-lg rounded-full animate-slideright cursor-pointer"
           onClick={() => navigate(`/artists/${song?.artists?.[0]?.adamid}`)}
           >
-            <img src={song?.images?.background} alt="name" className="rounded-full w-20 object-cover"/>
+            
+            <img src={song?.images?.background} alt={song?.title} className="rounded-full w-20 object-cover"/>
+            {/* <img src={song?.images?.background} alt="name" className="rounded-full w-20 object-cover"/> */}
           </SwiperSlide>
         ))}
         </Swiper>
