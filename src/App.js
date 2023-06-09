@@ -5,35 +5,41 @@ import TopPlay from "./components/TopPlay";
 import Discover from "./pages/Discover";
 import SongDetails from "./pages/SongDetails";
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation} from "react-router-dom";
 import MusicPlayer from "./components/MusicPlayer/index";
 import ArtistDetails from "./pages/ArtistDetails";
 import TopArtists from "./pages/TopArtists";
 import Search from "./pages/Search";
-
+import Auth from "./pages/Auth";
 
 function App() {
   const {activeSong} = useSelector((state) => state.player);
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/auth";
   return (
     <div className="relative flex">
       {/* Sidebar  */}
-      <SideBar />
+      {!isAuthPage && <SideBar />}
+      
       
       <div className="flex-1 flex flex-col bg-backgroundColor">
-        <SearchBar />
-        <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col">
+        {!isAuthPage && <SearchBar />}
+        
+        <div className={`px-6 ${isAuthPage ? `h-screen` : `h-[calc(100vh-72px)]`}  overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col`}>
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
+              <Route path="/auth" element={<Auth />} />
               <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/songs/:songid" element={<SongDetails />} />
               <Route path="/artists/:id" element={<ArtistDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>
-          <div className="xl:sticky relative top-0 h-fit">
+          {!isAuthPage && <div className="xl:sticky relative top-0 h-fit">
             <TopPlay />
-          </div>
+          </div>}
+          
         </div>
       </div>
       {activeSong?.title && (
