@@ -1,13 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import SongCard from "../components/SongCard";
 import { genres } from "../assets/constants";
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
+import 'react-toastify/dist/ReactToastify.css';
 function Discover() {
+
   const dispatch = useDispatch();
+
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const {data, isFetching, error} = useGetTopChartsQuery();
   // console.log(data);  
@@ -29,8 +31,7 @@ function Discover() {
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
           {songs?.map((song,i) => (
             <SongCard 
-            key={song.key}
-            
+            key={song.key} 
             song={song}
             i={i}
             isPlaying={isPlaying}

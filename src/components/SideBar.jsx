@@ -36,7 +36,7 @@ function SideBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  console.log("user",user);
+  console.log("user in sidebar",user);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const logOut = () => {

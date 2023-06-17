@@ -21,7 +21,7 @@ export const signInWithGoogle = createAsyncThunk(
       console.log("user",user);
       console.log("email",user.email, ",", user.displayName);
 
-      return {email : user.email, name: user.displayName};
+      return {email : user.email, name: user.displayName, userId : user.uid};
     } catch (error) {
       throw error;
     }
@@ -45,7 +45,7 @@ export const signUpWithEmail = createAsyncThunk(
 
       // Return the user data
       console.log(user);
-      return { email: user.email, name: user.displayName };
+      return { email: user.email, name: user.displayName ,userId : user.uid};
     } catch (error) {
       return (error.message);
     }
@@ -59,7 +59,7 @@ export const signInWithEmail = createAsyncThunk(
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log("sign in", user);
-      return { email: user.email, name: user.displayName };
+      return { email: user.email, name: user.displayName, userId : user.uid };
     } catch (error) {
       return (error.message);
     }
