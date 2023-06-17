@@ -1,21 +1,48 @@
 import "./App.css";
+import { useEffect } from "react";
 import SideBar from "./components/SideBar";
 import SearchBar from "./components/SearchBar";
 import TopPlay from "./components/TopPlay";
 import Discover from "./pages/Discover";
 import SongDetails from "./pages/SongDetails";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { Route, Routes, useLocation} from "react-router-dom";
 import MusicPlayer from "./components/MusicPlayer/index";
 import ArtistDetails from "./pages/ArtistDetails";
 import TopArtists from "./pages/TopArtists";
 import Search from "./pages/Search";
 import Auth from "./pages/Auth";
-
+import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { signInWithGoogle } from "./redux/features/userSlice";
+import { signInWithEmail } from "./redux/features/userSlice";
+import { logout } from "./redux/features/userSlice";
 function App() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const {activeSong} = useSelector((state) => state.player);
   const location = useLocation();
   const isAuthPage = location.pathname === "/auth";
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { email, displayName, uid } = user;
+        if(user.providerData[0].providerId === 'password'){
+          dispatch(signInWithEmail.fulfilled({ email, name: displayName, userId : uid }))
+        }
+        else{
+          dispatch(
+            signInWithGoogle.fulfilled({ email, name: displayName, userId: uid })
+          );
+        }
+        
+
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
   return (
     <div className="relative flex">
       {/* Sidebar  */}

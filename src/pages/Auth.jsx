@@ -21,12 +21,6 @@ function Auth() {
 
   const signUpWithEmailHandler = async (e) => {
     e.preventDefault();
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      alert("All fields are mandatory, Please fill all fields");
-      setError('All fields are mandatory');
-      return;
-    }
-
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       setError('Passwords do not match');
@@ -54,11 +48,6 @@ function Auth() {
   const signInWithEmailHandler = async (e) => {
     e.preventDefault();
     try {
-
-      if(!email || !password){
-        alert("All fields are mandatory");
-        setError("All fields are mandatory");
-      }
       // Dispatch sign in action
       await dispatch(signInWithEmail({ email, password })).unwrap();
       navigate('/');
