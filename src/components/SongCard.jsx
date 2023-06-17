@@ -11,7 +11,7 @@ function SongCard({song,i, isPlaying , activeSong, songs}) {
 
   const songID = song?.key;
   const user = useSelector((state) => state.user);
-  const userID = user.user.userId
+  const userID = user?.user?.userId
   console.log("user id is ", userID);
 
   console.log("like status", liked);
