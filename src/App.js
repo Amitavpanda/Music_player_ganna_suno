@@ -19,8 +19,11 @@ import { signInWithGoogle } from "./redux/features/userSlice";
 import { signInWithEmail } from "./redux/features/userSlice";
 import { logout } from "./redux/features/userSlice";
 
+
+import {musicPlayerVisible} from "./redux/features/playerSlice"; 
 function App() {
   const user = useSelector((state) => state.user);
+  const isMusicPlayerVisible = useSelector((state) => state.player.isMusicPlayerVisible);
   const dispatch = useDispatch();
   const { activeSong } = useSelector((state) => state.player);
   const location = useLocation();
@@ -29,7 +32,8 @@ function App() {
 
 
 const handleClose = () => {
-  console.log("close icon is clicked");
+  console.log("close button is clicked");
+  dispatch(musicPlayerVisible(false));
 }
 
   useEffect(() => {
@@ -80,12 +84,12 @@ const handleClose = () => {
 
         </div>
       </div>
-      {activeSong?.title && (
+      {activeSong?.title && isMusicPlayerVisible && (
         <>
           <div
             className="absolute h-40 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-black/50 to-backgroundColor backdrop-blur-lg z-10">
             <div
-              className="absolute top-2 right-2 cursor-pointer text-white text-xl" onClick={handleClose} 
+              className="absolute top-2 right-2 cursor-pointer text-white text-xl z-20" onClick={handleClose} 
             >
               <AiOutlineClose />
             </div>

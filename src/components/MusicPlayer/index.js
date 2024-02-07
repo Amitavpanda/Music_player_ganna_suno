@@ -11,6 +11,7 @@ import Player from "./Player";
 import SeekBar from "./SeekBar";
 import Track from "./Track";
 import VolumeBar from "./VolumeBar";
+
 function MusicPlayer() {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
     useSelector((state) => state.player);
@@ -30,6 +31,7 @@ function MusicPlayer() {
     } else {
       dispatch(playPause(true));
     }
+
   };
   const handleNextSong = () => {
     dispatch(playPause(false));
@@ -58,7 +60,8 @@ function MusicPlayer() {
         activeSong={activeSong}
       />
       <div className="flex-1 flex flex-col items-center justify-center">
-      <Controls
+
+        <Controls
           isPlaying={isPlaying}
           isActive={isActive}
           repeat={repeat}
@@ -70,6 +73,7 @@ function MusicPlayer() {
           handlePrevSong={handlePrevSong}
           handleNextSong={handleNextSong}
         />
+
          <SeekBar
           value={appTime}
           min="0"
