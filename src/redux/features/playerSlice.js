@@ -21,7 +21,7 @@ const playerSlice = createSlice({
       } else if (action.payload?.data?.properties) {
         state.currentSongs = action.payload?.data?.tracks;
       } else {
-        state.currentSongs = action.payload.data;
+        state.currentSongs = action.payload.songs;
       }
 
       state.currentIndex = action.payload.i;

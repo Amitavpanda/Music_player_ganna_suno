@@ -7,6 +7,8 @@ import PlayPause from './PlayPause';
 import { likeSongCard } from '../api/firestoreAPI';
 import { getLikesByUser } from '../api/firestoreAPI';
 function SongCard({song,i, isPlaying , activeSong, songs}) {
+
+  console.log("songs",songs);
   const [liked, setLiked] = useState(false);
 
   const songID = song?.key;

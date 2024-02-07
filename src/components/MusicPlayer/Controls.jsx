@@ -2,7 +2,7 @@ import React from 'react'
 import { BsFillSkipStartFill, BsFillSkipEndFill, BsPlayCircleFill } from "react-icons/bs";
 import { BsArrowRepeat, BsPauseCircleFill, BsFillPlayCircleFill, BsShuffle } from "react-icons/bs";
 function Controls({ isPlaying, repeat, setRepeat, shuffle, setShuffle, currentSongs, handlePlayPause, handlePrevSong, handleNextSong }) {
-  console.log("current song1", currentSongs);
+  console.log("current song2", currentSongs);
   return (
     <div className='flex items-center justify-around md:w-36 lg:w-52 2xl:w-80'>
       <BsArrowRepeat size={20} color={repeat ? '#76CCFB' : 'white'} onClick={() => setRepeat((prev) => !prev)} className="hidden sm:block cursor-pointer" />
