@@ -1,6 +1,9 @@
 import {FaCcDiscover ,} from "react-icons/fa";
 import {AiTwotoneHome} from "react-icons/ai";
 import {BiDockTop,BiBarChartSquare} from "react-icons/bi";
+import { BsPeopleFill } from "react-icons/bs";
+import { FaGrinHearts } from "react-icons/fa";
+
 
 export const genres = [
   { title: "Pop", value: "POP" },
@@ -19,6 +22,6 @@ export const genres = [
   { title: "K-Pop", value: "K_POP" },
 ];
 
-export const links = [{ name: 'Discover', to: '/', icon: FaCcDiscover },
-{ name: 'Top Artists', to: '/top-artists', icon: BiDockTop }
+export const links = [{ name: 'Discover', to: '/', icon: FaGrinHearts },
+{ name: 'Top Artists', to: '/top-artists', icon: BsPeopleFill }
 ];

@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         backgroundColor: "#0F1E36",
         skyColor: "#76CCFB",
+
+        
         
       },
     },
