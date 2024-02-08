@@ -8,6 +8,8 @@ import logo from "../assets/logo.png";
 import { links } from "../assets/constants";
 import { logout } from "../redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 const NavLinks = () => {
   return (
@@ -16,13 +18,22 @@ const NavLinks = () => {
         <NavLink
           key={item.name}
           to={item.to}
-          className="flex flex-row justify-start
-      items-center my-8"
+          className="relative flex flex-row justify-start items-center my-8"
         >
-          <item.icon className="bg-white text-backgroundColor rounded-full hover:text-white hover:bg-skyColor mr-5 w-6 h-6 " />
-          <div className="bg-white text-backgroundColor rounded-lg hover:text-white hover:bg-skyColor px-4 py-2 font-bold">
-            <Link to={item.to}>{item.name}</Link>
-          </div>
+
+          <item.icon className="bg-white text-backgroundColor rounded-full mr-5 w-6 h-6 hover:text-skyColor" />
+
+          <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+            <Link
+              to={item.to}
+              className='font-bold text-white text-[1.2rem] transition-all hover:text-skyColor py-1.5 relative z-10'
+            >
+              {item.name}
+            </Link>
+          </motion.div>
+
+
+
         </NavLink>
       ))}
     </div>
@@ -49,16 +60,14 @@ function SideBar() {
         <img alt="logo" src={logo} className="w-full h-40 object-contain" />
         <NavLinks />
         {user ? (
-          <button
-            onClick={logOut}
-            className="mt-50 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-          >
-            <Link to="/auth">Log Out</Link>
-          </button>
+          <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.2 }}>
+            <Link to="/auth" className="text-white hover:text-skyColor font-bold" >Log Out</Link>
+          </motion.div>
         ) : (
-          <button className="mt-50 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-            <Link to="/auth">Sign In</Link>
-          </button>
+          <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.2 }}>
+            <Link to="/auth" >Sign In</Link>
+
+          </motion.div>
         )}
       </div>
 
@@ -77,23 +86,19 @@ function SideBar() {
       </div>
 
       <div
-        className={`absolute flex flex-col items-center align-center top-0 h-screen w-1/3 bg-gradient-tl from-white/10 to-backgroundColor backdrop-blur-lg z-10 md:hidden smooth-transition ${
-          mobileMenuOpen ? "left-0" : "-left-full"
-        }`}
+        className={`absolute flex flex-col items-center align-center top-0 h-screen w-1/3 bg-gradient-tl from-white/10 to-backgroundColor backdrop-blur-lg z-10 md:hidden smooth-transition ${mobileMenuOpen ? "left-0" : "-left-full"
+          }`}
       >
         <img alt="logo" src={logo} className="w-full h-40 object-contain" />
         <NavLinks />
         {user ? (
-          <button
-            onClick={logOut}
-            className="mt-50 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-          >
-            <Link to="/auth">Log Out</Link>
-          </button>
+          <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.2 }}>
+            <Link to="/auth" className="text-white hover:text-skyColor font-bold" >Log Out</Link>
+          </motion.div>
         ) : (
-          <button className="mt-50 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-            <Link to="/auth">Sign In</Link>
-          </button>
+          <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.2 }}>
+            <Link to="/auth" >Sign In</Link>
+          </motion.div>
         )}
       </div>
     </>
