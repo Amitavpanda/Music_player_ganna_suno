@@ -7,10 +7,11 @@ import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCUhO6FHfH1P8WWQNv-uDxP7gH0sgTeqxs",
+  apiKey: firebaseApiKey,
   authDomain: "ganna-sunno.firebaseapp.com",
   projectId: "ganna-sunno",
   storageBucket: "ganna-sunno.appspot.com",
