@@ -47,12 +47,12 @@ function SideBar() {
   console.log("user in sidebar", user);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const logOut = () => {
-    dispatch(logout());
-    navigate("/auth");
-    alert("Log Out successfully");
-    console.log("log out succesfully");
-  };
+  // const logOut = () => {
+  //   dispatch(logout());
+  //   navigate("/auth");
+  //   alert("Log Out successfully");
+  //   console.log("log out succesfully");
+  // };
 
   return (
     <>
