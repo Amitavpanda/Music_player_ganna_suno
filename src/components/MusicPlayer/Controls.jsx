@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsFillSkipStartFill, BsFillSkipEndFill, BsPlayCircleFill } from "react-icons/bs";
+import { BsFillSkipStartFill, BsFillSkipEndFill } from "react-icons/bs";
 import { BsArrowRepeat, BsPauseCircleFill, BsFillPlayCircleFill, BsShuffle } from "react-icons/bs";
 function Controls({ isPlaying, repeat, setRepeat, shuffle, setShuffle, currentSongs, handlePlayPause, handlePrevSong, handleNextSong }) {
   console.log("current song2", currentSongs);

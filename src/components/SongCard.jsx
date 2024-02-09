@@ -2,7 +2,7 @@ import React, {useState, useMemo} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
-import { AiFillHeart, AiOutlineHeart  } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 import PlayPause from './PlayPause';
 import { likeSongCard } from '../api/firestoreAPI';
 import { getLikesByUser } from '../api/firestoreAPI';

@@ -1,6 +1,3 @@
-import {FaCcDiscover ,} from "react-icons/fa";
-import {AiTwotoneHome} from "react-icons/ai";
-import {BiDockTop,BiBarChartSquare} from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
 import { FaGrinHearts } from "react-icons/fa";
 
