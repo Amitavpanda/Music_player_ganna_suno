@@ -19,7 +19,7 @@ function Discover() {
   const songs = data?.tracks
   // console.log(songs);
 
-  songs?.map((song) => console.log(song));
+
   if(isFetching) return <Loader title= "Loading Songs...." />
 
   if(error) return <Error/>

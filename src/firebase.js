@@ -8,10 +8,10 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+// const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 
 const firebaseConfig = {
-  apiKey: firebaseApiKey,
+  apiKey: "AIzaSyCUhO6FHfH1P8WWQNv-uDxP7gH0sgTeqxs",
   authDomain: "ganna-sunno.firebaseapp.com",
   projectId: "ganna-sunno",
   storageBucket: "ganna-sunno.appspot.com",
