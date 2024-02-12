@@ -9,8 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from "swiper";
 import { useNavigate } from "react-router-dom";
 
-import 'swiper/css';
-import 'swiper/css/free-mode';
+import 'swiper/swiper.min.css'
 import SongBar from "./SongBar";
 
 

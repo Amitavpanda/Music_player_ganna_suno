@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import SideBar from "./components/SideBar";
 import SearchBar from "./components/SearchBar";
